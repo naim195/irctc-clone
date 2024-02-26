@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react'
-import { AppBar } from '@mui/material';
-
+import { useState, useEffect } from "react";
+import NavBar from "./components/NavBar";
 
 function App() {
-  return (
+  return(
     <>
-      
+      <NavBar />
     </>
   )
 }
 
-export default App
+export default App;
