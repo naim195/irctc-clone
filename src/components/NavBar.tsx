@@ -19,13 +19,13 @@ const IRCTCLogo = () => (
   <img
     src="https://www.irctc.co.in/nget/assets/images/logo.png"
     alt="IRCTC Logo"
-    style={{ height: "40px", width: "auto", marginRight: "50px"}}
+    style={{ height: "40px", width: "auto", marginRight: "50px" }}
   />
 );
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
