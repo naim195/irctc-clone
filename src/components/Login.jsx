@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { auth } from "./firebase/firebase";
+import { auth } from "../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
@@ -50,7 +50,11 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          {error && <Typography variant="body2" color="error">{error}</Typography>}
+          {error && (
+            <Typography variant="body2" color="error">
+              {error}
+            </Typography>
+          )}
           <Box
             component="form"
             onSubmit={handleSubmit}

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import AboutUs from "./AboutUs";
-import Booklist from "./Booklist";
-import Profile from "./Profile";
-import Login from "./Login";
-import Register from "./Register";
-import Payment from "./Payment";
+import Home from "./components/Home";
+import AboutUs from "./components/AboutUs";
+import Booklist from "./components/Booklist";
+import Profile from "./components/Profile";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Payment from "./components/Payment";
 
 function App() {
   return (
