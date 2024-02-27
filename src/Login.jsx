@@ -18,6 +18,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +28,7 @@ function Login() {
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        setError("Invalid Email and/or Password");
       });
   };
 
@@ -49,6 +50,7 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+          {error && <Typography variant="body2" color="error">{error}</Typography>}
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -76,7 +78,6 @@ function Login() {
               id="password"
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
-              
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

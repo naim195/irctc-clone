@@ -18,6 +18,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,7 +28,7 @@ function Register() {
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        setError("User Already Exists!");
       });
   };
 
@@ -49,6 +50,7 @@ function Register() {
           <Typography component="h1" variant="h5">
             Register
           </Typography>
+          {error && <Typography variant="body2" color="error">{error}</Typography>}
           <Box
             component="form"
             onSubmit={handleSubmit}
