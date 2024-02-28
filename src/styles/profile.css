@@ -1,0 +1,17 @@
+.profile-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 20px; /* Add top margin */
+  margin-bottom: 20px; /* Add bottom margin */
+}
+
+.text-field {
+  margin-top: 10px; /* Add top margin for TextField */
+  margin-bottom: 10px; /* Add bottom margin for TextField */
+}
