@@ -56,19 +56,22 @@ class Trie {
   }
 }
 
-const SearchResults = ({ station }) => {
-  const trie = new Trie();
-  stations.stations.forEach((s) => trie.insert(s.station));
-
-  const results = trie.searchPrefix(station);
-
-  return (
-    <div>
-      {results.map((result, index) => (
-        <div key={index}>{result}</div>
-      ))}
-    </div>
-  );
-};
+const SearchResults = ({ station, setStation }) => {
+    const trie = new Trie();
+    stations.stations.forEach((s) => trie.insert(s.station));
+  
+    const results = trie.searchPrefix(station);
+  
+    return (
+      <div>
+        {results.map((result, index) => (
+          <div key={index} onClick={() => setStation(result)}>
+            {result}
+          </div>
+        ))}
+      </div>
+    );
+  };
+  
 
 export default SearchResults;

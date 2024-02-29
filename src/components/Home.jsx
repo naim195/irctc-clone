@@ -36,17 +36,18 @@ const Home = () => {
             onChange={(e) => setFromStation(e.target.value.toUpperCase())}
           />
           {fromStation != "" && 
-            <SearchResults station={fromStation} />
-          }
-          <TextField
-            className="text-field"
-            label="To"
-            value={toStation.toUpperCase()}
-            onChange={(e) => setToStation(e.target.value.toUpperCase())}
-          />
-          {toStation != "" && 
-            <SearchResults station={toStation} />
-          }
+  <SearchResults station={fromStation} setStation={setFromStation} />
+}
+<TextField
+  className="text-field"
+  label="To"
+  value={toStation.toUpperCase()}
+  onChange={(e) => setToStation(e.target.value.toUpperCase())}
+/>
+{toStation != "" && 
+  <SearchResults station={toStation} setStation={setToStation} />
+}
+
           <Button className="button" onClick={swapStations}>
             Swap
           </Button>
