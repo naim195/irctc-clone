@@ -1,0 +1,53 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.from-to {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.form .text-field {
+  height: 100%;
+  margin-bottom: 15px;
+  justify-self: center;
+}
+
+.date-class {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.date-class .select {
+  height: 75%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .from-to {
+    flex-direction: column;
+  }
+
+  .date-class {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,6 +8,7 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Payment from "./components/Payment";
+import "@fontsource/roboto/500.css";
 
 function App() {
   return (
