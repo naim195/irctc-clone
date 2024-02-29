@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import "@fontsource/roboto/500.css";
 import "../styles/home.css";
+import SearchResults from "./SearchResults";
 
 const Home = () => {
   const [fromStation, setFromStation] = useState("");
@@ -31,15 +32,21 @@ const Home = () => {
           <TextField
             className="text-field"
             label="From"
-            value={fromStation}
-            onChange={(e) => setFromStation(e.target.value)}
+            value={fromStation.toUpperCase()}
+            onChange={(e) => setFromStation(e.target.value.toUpperCase())}
           />
+          {fromStation != "" && 
+            <SearchResults station={fromStation} />
+          }
           <TextField
             className="text-field"
             label="To"
-            value={toStation}
-            onChange={(e) => setToStation(e.target.value)}
+            value={toStation.toUpperCase()}
+            onChange={(e) => setToStation(e.target.value.toUpperCase())}
           />
+          {toStation != "" && 
+            <SearchResults station={toStation} />
+          }
           <Button className="button" onClick={swapStations}>
             Swap
           </Button>
