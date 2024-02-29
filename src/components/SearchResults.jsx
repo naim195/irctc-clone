@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import stations from '../stations.json';
+import React, { useState, useEffect } from "react";
+import stations from "../stations.json";
+import "../styles/searchResults.css";
 
 class TrieNode {
   constructor() {
@@ -57,21 +58,37 @@ class Trie {
 }
 
 const SearchResults = ({ station, setStation }) => {
-    const trie = new Trie();
-    stations.stations.forEach((s) => trie.insert(s.station));
-  
-    const results = trie.searchPrefix(station);
-  
-    return (
-      <div>
-        {results.map((result, index) => (
-          <div key={index} onClick={() => setStation(result)}>
-            {result}
-          </div>
-        ))}
-      </div>
-    );
+  const trie = new Trie();
+  stations.stations.forEach((s) => trie.insert(s.station));
+
+  const [results, setResults] = useState(trie.searchPrefix(station));
+  const [stationSelected, setStationSelected] = useState(false);
+
+  useEffect(() => {
+    if (!stationSelected) {
+      setResults(trie.searchPrefix(station));
+    }
+  }, [station, stationSelected]);
+
+  const handleStationClick = (result) => {
+    setStation(result);
+    setStationSelected(true);
+    setResults([]);
   };
-  
+
+  return (
+    <div>
+      {results.map((result, index) => (
+        <div
+          key={index}
+          onClick={() => handleStationClick(result)}
+          className="station-result"
+        >
+          {result}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default SearchResults;

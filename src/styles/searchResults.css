@@ -1,0 +1,8 @@
+.station-result {
+    cursor: pointer;
+  }
+  
+  .station-result:hover {
+    color: blue; /* Change this to the color you want when hovering */
+  }
+  
