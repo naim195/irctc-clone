@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import "../styles/profile.css";
 import "@fontsource/roboto/400.css";
 import { db, auth } from "../firebase/firebase"; // Import the Firebase database instance
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+
 
 const Profile = () => {
   const style = {
@@ -22,6 +23,25 @@ const Profile = () => {
     phoneNumber: "",
     state: "",
   });
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const userDocRef = doc(db, "users", auth.currentUser.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          setUserDetails(userDoc.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching user profile: ", error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
 
   // Function to handle updating user details
   const handleUpdateProfile = async () => {
