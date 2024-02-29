@@ -44,6 +44,7 @@ function ResponsiveAppBar() {
             src="https://www.irctc.co.in/nget/assets/images/secondry-logo.png"
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
+
           <Typography
             variant="h6"
             noWrap
@@ -103,7 +104,10 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Avatar
+            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+            src="https://www.irctc.co.in/nget/assets/images/secondry-logo.png"
+          />
           <Typography
             variant="h5"
             noWrap
