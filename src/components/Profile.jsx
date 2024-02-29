@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Box, TextField, Button } from "@mui/material";
 import "../styles/profile.css";
 import "@fontsource/roboto/400.css";
+import { db, auth } from "../firebase/firebase"; // Import the Firebase database instance
+import { doc, setDoc } from "firebase/firestore";
 
 const Profile = () => {
   const style = {
-    fontFamily: 'Roboto, sans-serif'
+    fontFamily: "Roboto, sans-serif",
   };
-  
+
   // Initial state for user details
   const [userDetails, setUserDetails] = useState({
     firstName: "",
@@ -22,9 +24,14 @@ const Profile = () => {
   });
 
   // Function to handle updating user details
-  const handleUpdateProfile = () => {
-    // Implement your update logic here, for now, just log the updated details
-    console.log("Updated user details:", userDetails);
+  const handleUpdateProfile = async () => {
+    try {
+      const userDocRef = doc(db, "users", auth.currentUser.uid);
+      await setDoc(userDocRef, userDetails);
+      console.log("User profile updated successfully");
+    } catch (error) {
+      console.error("Error updating user profile: ", error);
+    }
   };
 
   // Function to handle input change for user details
@@ -48,7 +55,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="lastName"
@@ -59,7 +66,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="middleName"
@@ -70,7 +77,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="username"
@@ -81,7 +88,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="email"
@@ -92,7 +99,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="gender"
@@ -103,7 +110,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="dob"
@@ -114,7 +121,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="phoneNumber"
@@ -125,7 +132,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <TextField
           id="state"
@@ -136,7 +143,7 @@ const Profile = () => {
           onChange={handleInputChange}
           fullWidth
           className="text-field"
-          style={{ marginTop: '10px', marginBottom: '10px' }}
+          style={{ marginTop: "10px", marginBottom: "10px" }}
         />
         <Button
           variant="contained"
