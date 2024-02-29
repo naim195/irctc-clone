@@ -5,7 +5,6 @@ import "@fontsource/roboto/400.css";
 import { db, auth } from "../firebase/firebase"; // Import the Firebase database instance
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
-
 const Profile = () => {
   const style = {
     fontFamily: "Roboto, sans-serif",
@@ -41,7 +40,6 @@ const Profile = () => {
 
     fetchUserProfile();
   }, []);
-
 
   // Function to handle updating user details
   const handleUpdateProfile = async () => {

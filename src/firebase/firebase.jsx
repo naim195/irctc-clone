@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "irctc-clone-df22b",
   storageBucket: "irctc-clone-df22b.appspot.com",
   messagingSenderId: "847051572226",
-  appId: "1:847051572226:web:68b097c0ef52fa6356d31b"
+  appId: "1:847051572226:web:68b097c0ef52fa6356d31b",
 };
 
 // Initialize Firebase
@@ -19,4 +19,3 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 export { auth, db };
-
