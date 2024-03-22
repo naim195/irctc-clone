@@ -46,7 +46,6 @@ const Profile = () => {
     try {
       const userDocRef = doc(db, "users", auth.currentUser.uid);
       await setDoc(userDocRef, userDetails);
-      console.log("User profile updated successfully");
     } catch (error) {
       console.error("Error updating user profile: ", error);
     }

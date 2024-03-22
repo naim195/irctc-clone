@@ -14,11 +14,13 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { auth } from "../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +28,7 @@ function Login() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        navigate("/home");
       })
       .catch((error) => {
         setError("Invalid Email and/or Password");

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
 import Booklist from "./components/Booklist";
@@ -11,11 +11,14 @@ import Payment from "./components/Payment";
 import "@fontsource/roboto/500.css";
 
 function App() {
+  const location = useLocation();
+  const hideNavBarFor = ["/login", "/register"];
+  
   return (
     <div className="main">
-      <NavBar />
+      {!hideNavBarFor.includes(location.pathname) && <NavBar />}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/booklist" element={<Booklist />} />
