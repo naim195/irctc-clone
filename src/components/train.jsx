@@ -2,9 +2,27 @@ import React, { useState, useEffect } from "react";
 import "../styles/train.css";
 import { Button } from "@mui/material";
 
-const Train = ({ trainData }) => {
+const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  const [click, setClick] = useState(false);
+  const [isBooked, setIsBooked] = useState(false);
+
+  useEffect(() => {
+    setIsBooked(
+      bookedTrains.some((train) => train.train_name === trainData.train_name)
+    );
+  }, [bookedTrains, trainData.train_name]);
+
+  const handleBookClick = () => {
+    if (isBooked) {
+      setBookedTrains(
+        bookedTrains.filter(
+          (train) => train.train_name !== trainData.train_name
+        )
+      );
+    } else {
+      setBookedTrains([...bookedTrains, trainData]);
+    }
+  };
 
   return (
     <div className="ticket-bg">
@@ -48,20 +66,15 @@ const Train = ({ trainData }) => {
         </p>
       </div>
       <div>
-      <Button
-          className="button"
-          variant="contained"
-          color="primary"
-          onClick={()=>setClick(!click)}
-        >
-          {click? 'REMOVE FROM BOOKLIST':'ADD TO BOOKLIST'}
-        </Button>
         <Button
           className="button"
           variant="contained"
           color="primary"
-          
+          onClick={handleBookClick}
         >
+          {isBooked ? "REMOVE FROM BOOKLIST" : "ADD TO BOOKLIST"}
+        </Button>
+        <Button className="button" variant="contained" color="primary">
           BOOK
         </Button>
       </div>

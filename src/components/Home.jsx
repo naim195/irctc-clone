@@ -15,7 +15,7 @@ import Train from "./train";
 import trainsData from "./example_response.json";
 import { v4 as uuidv4 } from "uuid";
 
-const Home = () => {
+const Home = ({ bookedTrains, setBookedTrains }) => {
   const [fromStation, setFromStation] = useState("");
   const [fromStationCode, setFromStationCode] = useState("");
   const [toStation, setToStation] = useState("");
@@ -153,7 +153,12 @@ const Home = () => {
       </Box>
 
       {trainsData.map((trainData) => (
-        <Train key={uuidv4()} trainData={trainData} />
+        <Train
+          key={uuidv4()}
+          trainData={trainData}
+          bookedTrains={bookedTrains}
+          setBookedTrains={setBookedTrains}
+        />
       ))}
     </div>
   );

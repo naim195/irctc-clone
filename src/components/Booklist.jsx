@@ -1,7 +1,16 @@
-import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
-const Booklist = () => {
-  return <div>Booklist</div>;
-};
+export default function Booklist({ bookedTrains }) {
+  console.log(bookedTrains);
+  return (
+    <div>
+      <div>Your booked tickets are :</div>
 
-export default Booklist;
+      {bookedTrains.map((train) => (
+        <div key={uuidv4()}>
+          <p>{train.train_name}</p>
+        </div>
+      ))}
+    </div>
+  );
+}

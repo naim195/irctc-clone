@@ -13,16 +13,28 @@ import "@fontsource/roboto/500.css";
 function App() {
   const location = useLocation();
   const hideNavBarFor = ["/login", "/register", "/"];
-  console.log(location);
+  const [bookedTrains, setBookedTrains] = useState([]);
 
   return (
     <div className="main">
       {!hideNavBarFor.includes(location.pathname) && <NavBar />}
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <Home
+              bookedTrains={bookedTrains}
+              setBookedTrains={setBookedTrains}
+            />
+          }
+        />
+        <Route
+          path="/booklist"
+          element={<Booklist bookedTrains={bookedTrains} />}
+        />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/booklist" element={<Booklist />} />
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
