@@ -152,7 +152,7 @@ const Home = () => {
         </Button>
       </Box>
 
-      {trainsData.map((trainData) => (        
+      {trainsData.map((trainData) => (
         <Train key={uuidv4()} trainData={trainData} />
       ))}
     </div>
