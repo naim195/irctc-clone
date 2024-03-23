@@ -3,9 +3,10 @@ import stations from "../stations.json";
 import "../styles/searchResults.css";
 
 class TrieNode {
-  constructor() {
+  constructor(code = null) {
     this.children = {};
     this.endOfWord = false;
+    this.code = code;
   }
 }
 
@@ -14,18 +15,19 @@ class Trie {
     this.root = new TrieNode();
   }
 
-  insert(word) {
+  insert(word, code) {
     let current = this.root;
     for (let i = 0; i < word.length; i++) {
       let ch = word[i];
       let node = current.children[ch];
       if (node == null) {
-        node = new TrieNode();
+        node = new TrieNode(code);
         current.children[ch] = node;
       }
       current = node;
     }
     current.endOfWord = true;
+    current.code = code;
   }
 
   searchPrefix(word) {
@@ -49,7 +51,7 @@ class Trie {
 
   collect(node, prefix, words) {
     if (node.endOfWord) {
-      words.push(prefix);
+      words.push({ station: prefix, code: node.code });
     }
     for (let key in node.children) {
       this.collect(node.children[key], prefix + key, words);
@@ -57,9 +59,9 @@ class Trie {
   }
 }
 
-const SearchResults = ({ station, setStation }) => {
+const SearchResults = ({ station, setStation, code, setCode }) => {
   const trie = new Trie();
-  stations.stations.forEach((s) => trie.insert(s.station));
+  stations.stations.forEach((s) => trie.insert(s.station, s.code));
 
   const [results, setResults] = useState(trie.searchPrefix(station));
   const [stationSelected, setStationSelected] = useState(false);
@@ -71,7 +73,8 @@ const SearchResults = ({ station, setStation }) => {
   }, [station, stationSelected]);
 
   const handleStationClick = (result) => {
-    setStation(result);
+    setStation(result.station);
+    setCode(result.code);
     setStationSelected(true);
     setResults([]);
   };
@@ -84,7 +87,7 @@ const SearchResults = ({ station, setStation }) => {
           onClick={() => handleStationClick(result)}
           className="station-result"
         >
-          {result}
+          {result.station}
         </div>
       ))}
     </div>

@@ -12,8 +12,9 @@ import "@fontsource/roboto/500.css";
 
 function App() {
   const location = useLocation();
-  const hideNavBarFor = ["/login", "/register"];
-  
+  const hideNavBarFor = ["/login", "/register", "/"];
+  console.log(location);
+
   return (
     <div className="main">
       {!hideNavBarFor.includes(location.pathname) && <NavBar />}
