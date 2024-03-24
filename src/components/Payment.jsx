@@ -1,13 +1,22 @@
 import { Button, Grid, TextField } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PaymentForm({
   paymentSuccessful,
-  setPaymentSuccessful,
+  setPaymentSuccessful,bookedTrains, setBookedTrains,currentTrain,setCurrentTrain
 }) {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     setPaymentSuccessful(true); // Set payment successful upon successful processing
+
+    const updatedBookedTrains = bookedTrains.map(train =>
+      train.train_name === currentTrain ? { ...train, paymentSuccessful: true } : train
+    );
+  
+    setBookedTrains(updatedBookedTrains);
+    navigate('/booklist');
   };
 
   return (

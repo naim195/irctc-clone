@@ -4,7 +4,7 @@ import fareData from "../fare_data.json";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function Booklist({ bookedTrains, setBookedTrains }) {
+export default function Booklist({ bookedTrains, setBookedTrains, currentTrain,setCurrentTrain }) {
   const navigate = useNavigate();
 
   // const [fareData, setFareData] = useState(null);
@@ -39,6 +39,11 @@ export default function Booklist({ bookedTrains, setBookedTrains }) {
     );
   };
 
+  const handlePayment = (trainName) => {
+    setCurrentTrain(trainName);
+    navigate('/payment');
+  }
+
   return (
     <div key={uuidv4()}>
       <h4>Your booked tickets are :</h4>
@@ -65,9 +70,11 @@ export default function Booklist({ bookedTrains, setBookedTrains }) {
               className="button"
               variant="contained"
               color="primary"
-              onClick={() => navigate("/payment")}
+              onClick={()=>handlePayment(train.train_name)}
+              disabled={train.paymentSuccessful}
             >
-              Pay Now
+                    {train.paymentSuccessful ? 'Already Booked' : 'Book Now'}
+
             </Button>
           </div>
         </div>

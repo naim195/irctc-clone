@@ -15,6 +15,7 @@ function App() {
   const hideNavBarFor = ["/login", "/register", "/"];
   const [bookedTrains, setBookedTrains] = useState([]);
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+  const [currentTrain, setCurrentTrain] = useState('');
 
   return (
     <div className="main">
@@ -36,6 +37,8 @@ function App() {
             <Booklist
               bookedTrains={bookedTrains}
               setBookedTrains={setBookedTrains}
+              currentTrain={currentTrain}
+              setCurrentTrain={setCurrentTrain}
             />
           }
         />
@@ -50,6 +53,10 @@ function App() {
             <Payment
               paymentSuccessful={paymentSuccessful}
               setPaymentSuccessful={setPaymentSuccessful}
+              bookedTrains={bookedTrains}
+              setBookedTrains={setBookedTrains}
+              currentTrain={currentTrain}
+              setCurrentTrain={setCurrentTrain}
             />
           }
         />
