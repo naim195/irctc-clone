@@ -12,8 +12,9 @@ import "@fontsource/roboto/500.css";
 import "../styles/home.css";
 import SearchResults from "./SearchResults";
 import Train from "./train";
-import trainsData from "./example_response.json";
+import trainsData from "../example_response.json";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ bookedTrains, setBookedTrains }) => {
   const [fromStation, setFromStation] = useState("");
@@ -24,6 +25,8 @@ const Home = ({ bookedTrains, setBookedTrains }) => {
   const [allClasses, setAllClasses] = useState("");
   const [categories, setCategories] = useState("");
   const [click, setClick] = useState(false);
+
+  const navigate = useNavigate();
 
   const swapStations = () => {
     setFromStation(toStation);
@@ -160,6 +163,14 @@ const Home = ({ bookedTrains, setBookedTrains }) => {
           setBookedTrains={setBookedTrains}
         />
       ))}
+      <Button
+        className="button"
+        variant="contained"
+        color="primary"
+        onClick={() => navigate("/booklist")}
+      >
+        Go To Booklist
+      </Button>
     </div>
   );
 };

@@ -14,8 +14,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-const pages = ["home", "about us", "booklist"];
-const settings = ["Profile", "Login", "Register", "Logout", "Payment"];
+const pages = ["Home", "About Us", "Booklist"];
+const settings = ["Profile", "Logout", "Payment"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

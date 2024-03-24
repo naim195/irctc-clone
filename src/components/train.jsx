@@ -8,7 +8,7 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
 
   useEffect(() => {
     setIsBooked(
-      bookedTrains.some((train) => train.train_name === trainData.train_name)
+      bookedTrains.some((train) => train.train_name === trainData.train_name),
     );
   }, [bookedTrains, trainData.train_name]);
 
@@ -16,8 +16,8 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
     if (isBooked) {
       setBookedTrains(
         bookedTrains.filter(
-          (train) => train.train_name !== trainData.train_name
-        )
+          (train) => train.train_name !== trainData.train_name,
+        ),
       );
     } else {
       setBookedTrains([...bookedTrains, trainData]);

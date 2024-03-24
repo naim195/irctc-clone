@@ -31,7 +31,7 @@ function App() {
         />
         <Route
           path="/booklist"
-          element={<Booklist bookedTrains={bookedTrains} />}
+          element={<Booklist bookedTrains={bookedTrains} setBookedTrains={setBookedTrains } />}
         />
         <Route path="/aboutus" element={<AboutUs />} />
 
