@@ -35,7 +35,7 @@ export default function Booklist({ bookedTrains, setBookedTrains }) {
 
   const removeItem = (train_remove) => {
     setBookedTrains(
-      bookedTrains.filter((train) => train.train_name != train_remove)
+      bookedTrains.filter((train) => train.train_name != train_remove),
     );
   };
 

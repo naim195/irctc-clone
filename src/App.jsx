@@ -14,6 +14,7 @@ function App() {
   const location = useLocation();
   const hideNavBarFor = ["/login", "/register", "/"];
   const [bookedTrains, setBookedTrains] = useState([]);
+  const [paymentSuccessful, setPaymentSuccessful] = useState(false);
 
   return (
     <div className="main">
@@ -31,14 +32,27 @@ function App() {
         />
         <Route
           path="/booklist"
-          element={<Booklist bookedTrains={bookedTrains} setBookedTrains={setBookedTrains } />}
+          element={
+            <Booklist
+              bookedTrains={bookedTrains}
+              setBookedTrains={setBookedTrains}
+            />
+          }
         />
         <Route path="/aboutus" element={<AboutUs />} />
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route
+          path="/payment"
+          element={
+            <Payment
+              paymentSuccessful={paymentSuccessful}
+              setPaymentSuccessful={setPaymentSuccessful}
+            />
+          }
+        />
       </Routes>
     </div>
   );

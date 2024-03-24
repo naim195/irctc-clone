@@ -1,7 +1,37 @@
+import { Button, Grid, TextField } from "@mui/material";
 import React from "react";
 
-const Payment = () => {
-  return <div>Payment</div>;
-};
+export default function PaymentForm({
+  paymentSuccessful,
+  setPaymentSuccessful,
+}) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setPaymentSuccessful(true); // Set payment successful upon successful processing
+  };
 
-export default Payment;
+  return (
+    <form onSubmit={handleSubmit}>
+      
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <TextField required id="cardNumber" label="Card number" fullWidth />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField required id="expDate" label="Expiry date" fullWidth />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField required id="cvv" label="CVV" fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField required id="country" label="Country" fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="contained" color="primary" type="submit">
+            Pay Now
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
+  );
+}
