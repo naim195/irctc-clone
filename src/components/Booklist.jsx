@@ -3,8 +3,14 @@ import { v4 as uuidv4 } from "uuid";
 import fareData from "../fare_data.json";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import "../styles/booklist.css"
 
-export default function Booklist({ bookedTrains, setBookedTrains, currentTrain,setCurrentTrain }) {
+export default function Booklist({
+  bookedTrains,
+  setBookedTrains,
+  currentTrain,
+  setCurrentTrain,
+}) {
   const navigate = useNavigate();
 
   // const [fareData, setFareData] = useState(null);
@@ -41,15 +47,15 @@ export default function Booklist({ bookedTrains, setBookedTrains, currentTrain,s
 
   const handlePayment = (trainName) => {
     setCurrentTrain(trainName);
-    navigate('/payment');
-  }
+    navigate("/payment");
+  };
 
   return (
     <div key={uuidv4()}>
       <h4>Your booked tickets are :</h4>
 
       {bookedTrains.map((train) => (
-        <div>
+        <div className="bg">
           <div key={uuidv4()}>
             <p>Train Name: {train.train_name}</p>
             <p>From: {train.from_station_name}</p>
@@ -70,11 +76,10 @@ export default function Booklist({ bookedTrains, setBookedTrains, currentTrain,s
               className="button"
               variant="contained"
               color="primary"
-              onClick={()=>handlePayment(train.train_name)}
+              onClick={() => handlePayment(train.train_name)}
               disabled={train.paymentSuccessful}
             >
-                    {train.paymentSuccessful ? 'Already Booked' : 'Book Now'}
-
+              {train.paymentSuccessful ? "Already Booked" : "Book Now"}
             </Button>
           </div>
         </div>

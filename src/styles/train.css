@@ -1,3 +1,14 @@
 .ticket-bg {
   background-color: rgba(33, 248, 248, 0.225);
+  width: 55%;
+}
+
+.details,
+.timings {
+  display: flex;
+  justify-content: space-between;
+}
+
+.days span {
+  gap: 2px;
 }

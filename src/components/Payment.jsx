@@ -4,24 +4,29 @@ import { useNavigate } from "react-router-dom";
 
 export default function PaymentForm({
   paymentSuccessful,
-  setPaymentSuccessful,bookedTrains, setBookedTrains,currentTrain,setCurrentTrain
+  setPaymentSuccessful,
+  bookedTrains,
+  setBookedTrains,
+  currentTrain,
+  setCurrentTrain,
 }) {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    setPaymentSuccessful(true); // Set payment successful upon successful processing
+    setPaymentSuccessful(true);
 
-    const updatedBookedTrains = bookedTrains.map(train =>
-      train.train_name === currentTrain ? { ...train, paymentSuccessful: true } : train
+    const updatedBookedTrains = bookedTrains.map((train) =>
+      train.train_name === currentTrain
+        ? { ...train, paymentSuccessful: true }
+        : train,
     );
-  
+
     setBookedTrains(updatedBookedTrains);
-    navigate('/booklist');
+    navigate("/booklist");
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField required id="cardNumber" label="Card number" fullWidth />

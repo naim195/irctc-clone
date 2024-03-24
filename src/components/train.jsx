@@ -8,7 +8,7 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
 
   useEffect(() => {
     setIsBooked(
-      bookedTrains.some((train) => train.train_name === trainData.train_name),
+      bookedTrains.some((train) => train.train_name === trainData.train_name)
     );
   }, [bookedTrains, trainData.train_name]);
 
@@ -16,8 +16,8 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
     if (isBooked) {
       setBookedTrains(
         bookedTrains.filter(
-          (train) => train.train_name !== trainData.train_name,
-        ),
+          (train) => train.train_name !== trainData.train_name
+        )
       );
     } else {
       setBookedTrains([...bookedTrains, trainData]);
@@ -26,7 +26,7 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
 
   return (
     <div className="ticket-bg">
-      <div>
+      <div className="details">
         <p>{trainData.train_name}</p>
         <div className="days">
           <p>Runs on:</p>
@@ -34,13 +34,13 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
             if (trainData.run_days.includes(day)) {
               return (
                 <span key={day} style={{ color: "green" }}>
-                  {day}
+                  {day + " "}
                 </span>
               );
             } else {
               return (
                 <span key={day} style={{ color: "red" }}>
-                  {day}
+                  {day + " "}
                 </span>
               );
             }
@@ -56,7 +56,7 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
           Train Schedule
         </Button>
       </div>
-      <div>
+      <div className="timings">
         <p>
           {trainData.from_std} | {trainData.from_station_name}
         </p>
@@ -73,9 +73,6 @@ const Train = ({ trainData, bookedTrains, setBookedTrains }) => {
           onClick={handleBookClick}
         >
           {isBooked ? "REMOVE FROM BOOKLIST" : "ADD TO BOOKLIST"}
-        </Button>
-        <Button className="button" variant="contained" color="primary">
-          BOOK
         </Button>
       </div>
     </div>

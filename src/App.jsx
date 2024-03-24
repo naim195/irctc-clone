@@ -9,13 +9,14 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Payment from "./components/Payment";
 import "@fontsource/roboto/500.css";
+import Logout from "./components/Logout";
 
 function App() {
   const location = useLocation();
   const hideNavBarFor = ["/login", "/register", "/"];
   const [bookedTrains, setBookedTrains] = useState([]);
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
-  const [currentTrain, setCurrentTrain] = useState('');
+  const [currentTrain, setCurrentTrain] = useState("");
 
   return (
     <div className="main">
@@ -60,6 +61,7 @@ function App() {
             />
           }
         />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </div>
   );
